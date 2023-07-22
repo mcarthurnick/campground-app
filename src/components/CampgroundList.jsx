@@ -1,17 +1,22 @@
-import {useState} from 'react'
+import axios from 'axios'
 
-
-function CampgroundList({campgroundListData, editing, campToEdit}) {
+function CampgroundList({campgroundListData, renderCampgroundlist, editing, campToEdit}) {
 
 
 const campList = campgroundListData.map((campground) => {
     const {id, name, description, location, spotsAvailable, img} = campground;
 
     const updateCampground = () => {
-        console.log('campground id', id )
         campToEdit(campground)
         editing(true)
     }
+
+    const deleteCampground = () => {
+        axios.post(`/api/campground/delete/${id}`)
+        .then((response) => {
+            renderCampgroundlist(response.data)
+        })
+}
 
     return (
         <article key={id}>
@@ -30,7 +35,7 @@ const campList = campgroundListData.map((campground) => {
                             <button className="form-button" onClick={updateCampground}>Edit</button>
                         </div>
                         <div>
-                            <button className="form-button" onClick={updateCampground}>Delete</button>
+                            <button className="form-button" onClick={deleteCampground}>Delete</button>
                         </div>
                     </div>
                 </div>

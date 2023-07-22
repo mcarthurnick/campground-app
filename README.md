@@ -1,8 +1,18 @@
-# React + Vite
+# Campground App
+## The only campground app you will ever need.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+In order to run this app you will need to do a couple of things. First, clone this repository onto your local machine. Once you have this on your machine, then run:
+```
+npm install
 
-Currently, two official plugins are available:
+npm run dev
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Once you have done that, go to your web browser and type in: http://localhost:8000 . From there you will have access to the campground list.
+
+If you would like to add a campground, feel free. You can use a campground image in the /public/assets/ folder or just copy and paste a link from a Google search.
+
+If you want to edit a campground or delete it, then the buttons for the specific campground are below the description.
+
+Enjoy!
+

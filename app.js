@@ -51,7 +51,34 @@ app.post('/api/campground', (req, res) => {
 })
 
 app.post('/api/campground/:id', (req, res) => {
+    const {id} = req.params
+    let {name, description, location, spotsAvailable, img} = req.body
+    const index = campgrounds.findIndex((el) => el.id === +id)
+
+    campgrounds[index] = {
+        id: +id,
+        name: name,
+        description: description, 
+        location: location, 
+        spotsAvailable: +spotsAvailable, 
+        img: img
+    }
+
+    res.json(campgrounds)
+
+})
+
+app.post('/api/campground/delete/:id', (req, res) => {
+    const {id} = req.params;
+    const index = campgrounds.findIndex((campground) => campground.id === Number(id))
+
+    if(index === -1){
+        res.status(404).json({error: `Campground with ID ${id} was not found`})
+    } else {
     
+        campgrounds.splice(index, 1)
+        res.json(campgrounds)
+    }
 })
 
 

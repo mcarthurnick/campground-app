@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 
-function UpdateCampgroundForm({campground}) {
-    console.log('campground', campground)
+function UpdateCampgroundForm({editing, campground, setCampgrounds}) {
     const [id, setId] = useState(campground.id)
     const [name, setName] = useState(campground.name)
     const [description, setDescription] = useState(campground.description)
@@ -21,9 +20,9 @@ function UpdateCampgroundForm({campground}) {
             img: img
         
         })
-        //const newCampground = {...data}
     
-        //renderCampgroundlist([...campgrounds, newCampground])
+        setCampgrounds(data)
+        editing(false)
      }
 
     return (
